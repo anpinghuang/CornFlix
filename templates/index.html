@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- import bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!---import bootstrap end -->
+
+  <script>
+    // nothing here so far lol
+  </script>
+  
+  <title>CornFlix - The Best Place to Watch Free Movies</title>
+  <link rel="icon" type="image/x-icon" href="https://i.ibb.co/fXRYNNV/favicon-32x32.png">
+
+  <style>
+    .display-stuff {
+      background-color: #0e1525;
+      color: white;
+      height: 300px;
+      width: 60vw;
+      padding: 10px;
+      position: relative;
+      top: 12vh;
+      border-radius: 10px;
+    }
+    .movie-name-display {
+      text-align:center;
+      padding:10px;
+    }
+    .movie-description {
+      padding: 10px;
+      background-color: yellow;
+      width: 40vw;
+      position: relative;
+      left: 100px;
+      top: -7px;
+      color:black;
+      font-size: 20px;
+      border-radius: 10px;
+    }
+    iframe {
+      width: 95vw;
+      height:100vh;
+    }
+    .logo-img {
+      width: 20vw;
+    }
+    body {
+      background-color: #121212;
+    }
+    .form-group {
+      padding: 40px;
+      position: relative;
+      padding-left: 100px;
+      padding-right: 100px;
+      top: 20vh; 
+    }
+    .banner-image{
+      width: 20%;
+      position: relative;
+      top: 50px;
+    }
+    .img-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      position: relative;
+      top: 16vh;
+    }
+    .button-class {
+      padding: 10px;
+    }
+    .movie-poster-img {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    h4 {
+      padding-bottom: 10px;
+      color: white;
+    }
+    .footer-class {
+      position: relative;
+      bottom: -10vh;
+      padding: 10px;
+      color: white;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="img-div">
+    <img src="https://i.ibb.co/hybzYc8/HD-transparent-picture-2.png" class="banner-image">
+  </div>
+
+  <center>
+    <div>
+      <form action="/image" method="post">
+        <div class="form-group form-group-lg">
+          <h4>The best place to watch free movies. (trust me bro)</h4>
+          <input type="text" class="form-control" placeholder="Type movie here" name="movietitle">
+          <div class="button-class">
+            <button type="submit" class="btn btn-primary" style="visibility:hidden">Search</button> <!--- request.form the NAME -->
+          </div>
+        
+        </div>
+      </form>
+    </div>
+    <div class="display-stuff" style="visibility:{{visibility}}">
+      <img width="200" align="left" src="{{movie_poster}}" class="movie-poster-img">
+      <h1 class="movie-name-display">{{title}}</h1>
+      <div class="movie-description">
+        <p align="center"><b>Year: </b>{{movie_year}} | <b>Rated: </b>{{movie_rated}} | <b>Genre: </b>{{movie_genre}} | <b>Runtime: </b>{{movie_runtime}}</p>
+      </div>
+      <!-- display button -->
+      <form action="{{ url_for('watch', title=title) }}" method="post">
+        <button type="submit" value="{{movie_id}}" name="watch_button" class="btn btn-success">Watch Now</button>
+      </form>
+      
+    </div>
+
+    <footer class="footer-class">
+      <p>Made with ❤️ by AP</p>
+    </footer>
+  </center>
+</body>
+</html>
